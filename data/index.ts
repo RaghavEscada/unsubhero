@@ -1,11 +1,8 @@
 export const navItems = [
-  { name: "Features", link: "#about" },
-  { name: "System", link: "#projects" },
-  { name: "Testimonial", link: "#clients" },
-  { name: "Experience", link: "#experience" },
+  { name: "Features", link: "#features" },
+  { name: "How It Works", link: "#how-it-works" },
   { name: "Pricing", link: "#pricing" },
-  { name: "Approach", link: "#approach" },
-  { name: "Contact", link: "#footer" },
+  { name: "Contact", link: "#contact" },
 ];
 
 export const gridItems = [
@@ -18,7 +15,7 @@ export const gridItems = [
     img: "/b1.png",
     spareImg: "",
   },
-  
+
   {
     id: 2,
     title: "Works with any email provider",
@@ -76,27 +73,37 @@ export const gridItems = [
 ];
 
 export const projects = [
-
+  {
+    id: 1,
+    title: "One-Click Unsubscribe",
+    des: "Automated unsubscribe process",
+    img: "/p1.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    link: "/automation",
+  },
   {
     id: 2,
-    title: "One-Click Unsubscribe",
-    des: "Simply forward unwanted emails to unsub@unsubhero.com and our system handles the rest - no manual clicking required.",
-    img: "/feature2.svg",
-
+    title: "Smart Newsletter Detection",
+    des: "Intelligent newsletter identification system",
+    img: "/p2.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    link: "/detection",
   },
   {
     id: 3,
-    title: "Universal Email Support",
-    des: "Works seamlessly with Gmail, Outlook, Yahoo, Apple Mail, and any email provider. Privacy-first with zero email storage.",
-    img: "/feature3.svg",
-
+    title: "Clean Inbox in Minutes",
+    des: "Fast inbox cleanup solution",
+    img: "/p3.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+    link: "/cleanup",
   },
   {
     id: 4,
-    title: "Smart Automation",
-    des: "Set it and forget it. Our system works 24/7 to keep your inbox clean while you sleep, getting smarter over time.",
-    img: "/feature4.svg",
-
+    title: "AI-Powered Email Management",
+    des: "Advanced email management system",
+    img: "/p4.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    link: "/management",
   },
 ];
 

@@ -18,17 +18,19 @@ const Pricing = dynamic(() => import("@/components/Pricing"), { ssr: false });
 const Home = () => {
   return (
     <ClientOnly>
-      <main className="relative bg-black flex justify-center items-center flex-col overflow-hidden mx-auto">
-        <div className="h-full w-full">
+      <main className="relative bg-black flex justify-center items-center flex-col overflow-hidden mx-auto min-h-screen">
+        <div className="h-full w-full max-w-7xl mx-auto">
           <FloatingNav navItems={navItems} />
-          <Hero />
-          <Grid />
-          <RecentProjects />
-          <Clients />
-          <Experience />
-          <Pricing/>
-          <Approach />
-          <Footer />
+          <div className="pt-16 md:pt-24">
+            <Hero />
+            <Grid />
+            <RecentProjects />
+            <Clients />
+            <Experience />
+            <Pricing />
+            <Approach />
+            <Footer />
+          </div>
         </div>
       </main>
     </ClientOnly>

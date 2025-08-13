@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
+import { FaRocket, FaBuilding, FaCrown } from "react-icons/fa";
 import { PinContainer } from "./ui/Pin";
 
 const pricingPlans = [
@@ -18,7 +19,7 @@ const pricingPlans = [
             "Mobile app access"
         ],
         popular: false,
-        img: "/p1.svg" // You can replace with your own icons
+        icon: FaRocket
     },
     {
         id: 2,
@@ -36,7 +37,7 @@ const pricingPlans = [
             "API access"
         ],
         popular: true,
-        img: "/p2.svg"
+        icon: FaBuilding
     },
     {
         id: 3,
@@ -54,7 +55,7 @@ const pricingPlans = [
             "Dedicated account manager"
         ],
         popular: false,
-        img: "/p3.svg"
+        icon: FaCrown
     }
 ];
 
@@ -110,79 +111,87 @@ const PricingSection = () => {
             </div>
 
             {/* Pricing Cards */}
-            <div className="flex flex-wrap items-center justify-center p-4 gap-8 mt-10">
-                {pricingPlans.map((plan) => (
-                    <div
-                        className="lg:min-h-[35rem] h-[30rem] flex items-center justify-center sm:w-96 w-[80vw] relative"
-                        key={plan.id}
-                    >
-                        {plan.popular && (
-                            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                                <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
-                                    Most Popular
-                                </span>
-                            </div>
-                        )}
-
-                        <PinContainer
-                            title={plan.name}
-                            href="#"
+            <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+                {pricingPlans.map((plan) => {
+                    const IconComponent = plan.icon;
+                    return (
+                        <div
+                            className="lg:min-h-[35rem] h-[30rem] flex items-center justify-center sm:w-96 w-[80vw] relative"
+                            key={plan.id}
                         >
-                            <div className="relative flex flex-col items-center justify-start sm:w-96 w-[80vw] overflow-hidden h-[28rem] p-6">
-                                <div
-                                    className="relative w-full h-full overflow-hidden lg:rounded-3xl flex flex-col"
-                                    style={{
-                                        backgroundColor: plan.popular ? "#1a1a2e" : "#13162D",
-                                        border: plan.popular ? "2px solid #6366f1" : "1px solid #2a2d47"
-                                    }}
-                                >
-                                    {/* Plan Header */}
-                                    <div className="text-center mb-6">
-                                        <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                                        <div className="flex items-baseline justify-center mb-2">
-                                            <span className="text-4xl font-bold text-white">
-                                                ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
-                                            </span>
-                                            <span className="text-gray-400 ml-2">
-                                                /{isYearly ? 'year' : 'month'}
-                                            </span>
+                            {plan.popular && (
+                                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                                    <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                                        Most Popular
+                                    </span>
+                                </div>
+                            )}
+
+                            <PinContainer
+                                title={plan.name}
+                                href="#"
+                            >
+                                <div className="relative flex flex-col items-center justify-start sm:w-96 w-[80vw] overflow-hidden h-[28rem] p-6">
+                                    <div
+                                        className="relative w-full h-full overflow-hidden lg:rounded-3xl flex flex-col"
+                                        style={{
+                                            backgroundColor: plan.popular ? "#1a1a2e" : "#13162D",
+                                            border: plan.popular ? "2px solid #6366f1" : "1px solid #2a2d47"
+                                        }}
+                                    >
+                                        {/* Plan Header */}
+                                        <div className="text-center mb-6">
+                                            <div className="flex justify-center mb-4">
+                                                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                                                    <IconComponent className="text-white text-2xl" />
+                                                </div>
+                                            </div>
+                                            <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                                            <div className="flex items-baseline justify-center mb-2">
+                                                <span className="text-4xl font-bold text-white">
+                                                    ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                                                </span>
+                                                <span className="text-gray-400 ml-2">
+                                                    /{isYearly ? 'year' : 'month'}
+                                                </span>
+                                            </div>
+                                            {isYearly && (
+                                                <p className="text-green-400 text-sm">
+                                                    Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice} annually
+                                                </p>
+                                            )}
+                                            <p className="text-gray-400 text-sm mt-2">{plan.description}</p>
                                         </div>
-                                        {isYearly && (
-                                            <p className="text-green-400 text-sm">
-                                                Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice} annually
-                                            </p>
-                                        )}
-                                        <p className="text-gray-400 text-sm mt-2">{plan.description}</p>
-                                    </div>
 
-                                    {/* Features */}
-                                    <div className="flex-1">
-                                        <ul className="space-y-3">
-                                            {plan.features.map((feature, index) => (
-                                                <li key={index} className="flex items-start">
-                                                    <FaCheck className="text-green-400 mt-1 mr-3 flex-shrink-0" size={12} />
-                                                    <span className="text-gray-300 text-sm">{feature}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                        {/* Features */}
+                                        <div className="flex-1">
+                                            <ul className="space-y-3">
+                                                {plan.features.map((feature, index) => (
+                                                    <li key={index} className="flex items-start">
+                                                        <FaCheck className="text-green-400 mt-1 mr-3 flex-shrink-0" size={12} />
+                                                        <span className="text-gray-300 text-sm">{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
 
-                                    {/* CTA Button */}
-                                    <div className="mt-6">
-                                        <button
-                                            className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 ${plan.popular
-                                                    ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
-                                                    : "bg-gray-700 text-white hover:bg-gray-600"
-                                                }`}
-                                        >
-                                            Get Started
-                                        </button>
+                                        {/* CTA Button */}
+                                        <div className="mt-6">
+                                            <button
+                                                className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 ${plan.popular
+                                                        ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
+                                                        : "bg-gray-700 text-white hover:bg-gray-600"
+                                                    }`}
+                                            >
+                                                Get Started
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </PinContainer>
-                    </div>
-                ))}
+                            </PinContainer>
+                        </div>
+                    );
+                })}
             </div>
 
             {/* Additional Info */}

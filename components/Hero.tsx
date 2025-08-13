@@ -47,7 +47,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg text-gray-400 mb-8 leading-relaxed max-w-2xl font-light">
-            Forward unwanted newsletters to{" "}
+            Forward unwanted emails to{" "}
             <span className="font-semibold text-white border-b border-gray-600 hover:border-gray-400 transition-colors cursor-pointer">
               unsub@unsubhero.com
             </span>{" "}

@@ -1,65 +1,73 @@
 "use client";
 
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaMousePointer, FaSearch, FaClock, FaBrain } from "react-icons/fa";
+
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
 
+const projectIcons = [
+  FaMousePointer, // One-Click Unsubscribe Automation
+  FaSearch,       // Smart Newsletter Detection
+  FaClock,        // Clean Inbox in Minutes
+  FaBrain         // AI-Powered Email Management
+];
+
 const RecentProjects = () => {
   return (
-    <section id="projects" className="py-20">
-      <h1 className="heading text-white">
+    <div className="py-12 px-4">
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-white mb-3">
         Experience the genius of{" "}
-        <span
-          className="bg-white px-2 py-1 rounded text-black italic"
-          style={{ fontFamily: 'Times New Roman, serif' }}
-        >
-         Intelligent System
+        <span className="bg-white px-2 py-1 rounded text-black italic" style={{ fontFamily: 'Times New Roman, serif' }}>
+          Intelligent System
         </span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
-        {projects.map((item) => (
-          <div
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
-            key={item.id}
-          >
-            <PinContainer
-              title="Unsub Hero"
-              href="https://twitter.com/mannupaaji"
+      <p className="text-center text-gray-400 text-sm max-w-xl mx-auto mb-8">
+        Forward unwanted newsletters to unsub@unsubhero.com and watch the magic happen.
+        Powerful email management built for modern inbox cleanup.
+      </p>
+      <div className="flex flex-wrap items-center justify-center p-4 gap-6">
+        {projects.map((item, index) => {
+          const IconComponent = projectIcons[index];
+          return (
+            <div
+              className="lg:min-h-[28rem] h-[22rem] flex items-center justify-center sm:w-80 w-full max-w-sm"
+              key={item.id}
             >
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <img src="/bg.png" alt="bgimg" />
-                </div>
-                <img
-                  src={item.img}
-                  alt="cover"
-                  className="z-10 absolute bottom-0"
-                />
-              </div>
-
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                {item.title}
-              </h1>
-
-              <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                style={{
-                  color: "#BEC1DD",
-                  margin: "1vh 0",
-                }}
+              <PinContainer
+                title={item.title}
+                href={item.link}
               >
-                {item.des}
-              </p>
+                <div className="relative flex items-center justify-center sm:w-80 w-full overflow-hidden h-[16vh] lg:h-[24vh] mb-6">
+                  <div
+                    className="relative w-full h-full overflow-hidden lg:rounded-3xl"
+                    style={{ backgroundColor: "#13162D" }}
+                  >
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                        <IconComponent className="text-white text-2xl" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            
-            </PinContainer>
-          </div>
-        ))}
+                <h1 className="font-bold text-lg md:text-xl text-base line-clamp-1 text-center mb-2">
+                  {item.title}
+                </h1>
+
+                <p
+                  className="text-sm text-center"
+                  style={{
+                    color: "#BEC1DD",
+                  }}
+                >
+                  {item.des}
+                </p>
+              </PinContainer>
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 };
 
