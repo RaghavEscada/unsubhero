@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { FaCheck, FaStar, FaRocket, FaBuilding, FaUsers, FaShield, FaCrown, FaLightbulb } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa6";
+import { PinContainer } from "./ui/Pin";
 
 const pricingPlans = [
     {
@@ -8,20 +9,16 @@ const pricingPlans = [
         name: "Starter",
         monthlyPrice: 29,
         yearlyPrice: 290,
-        description: "Perfect for individuals and small projects",
+        description: "Perfect for individuals getting started",
         features: [
             "Up to 5 projects",
-            "Basic analytics dashboard",
-            "Email support (24h response)",
-            "5GB storage",
-            "Mobile app access",
-            "Standard templates",
-            "Basic integrations"
+            "Basic analytics",
+            "Email support",
+            "1GB storage",
+            "Mobile app access"
         ],
         popular: false,
-        icon: FaLightbulb,
-        color: "from-blue-500 to-cyan-500",
-        bgGradient: "from-blue-50 to-cyan-50"
+        img: "/p1.svg" // You can replace with your own icons
     },
     {
         id: 2,
@@ -31,19 +28,15 @@ const pricingPlans = [
         description: "Ideal for growing businesses and teams",
         features: [
             "Unlimited projects",
-            "Advanced analytics & insights",
-            "Priority support (4h response)",
-            "100GB storage",
-            "Team collaboration tools",
+            "Advanced analytics",
+            "Priority support",
+            "50GB storage",
+            "Team collaboration",
             "Custom integrations",
-            "API access",
-            "Advanced templates",
-            "White-label options"
+            "API access"
         ],
         popular: true,
-        icon: FaRocket,
-        color: "from-purple-500 to-pink-500",
-        bgGradient: "from-purple-50 to-pink-50"
+        img: "/p2.svg"
     },
     {
         id: 3,
@@ -54,228 +47,161 @@ const pricingPlans = [
         features: [
             "Everything in Professional",
             "Unlimited storage",
-            "24/7 dedicated support",
-            "Custom onboarding program",
-            "Enterprise security & SSO",
-            "SLA guarantee (99.9%)",
-            "Dedicated account manager",
-            "Custom feature development",
-            "Advanced compliance tools"
+            "24/7 phone support",
+            "Custom onboarding",
+            "Advanced security",
+            "SLA guarantee",
+            "Dedicated account manager"
         ],
         popular: false,
-        icon: FaBuilding,
-        color: "from-amber-500 to-orange-500",
-        bgGradient: "from-amber-50 to-orange-50"
+        img: "/p3.svg"
     }
 ];
 
 const PricingSection = () => {
     const [isYearly, setIsYearly] = useState(false);
-    const [hoveredPlan, setHoveredPlan] = useState(null);
 
-    const calculateSavings = (plan) => {
-        return (plan.monthlyPrice * 12) - plan.yearlyPrice;
-    };
-
-    const calculateSavingsPercentage = (plan) => {
-        const savings = calculateSavings(plan);
-        const monthlyTotal = plan.monthlyPrice * 12;
-        return Math.round((savings / monthlyTotal) * 100);
+    const togglePricing = () => {
+        setIsYearly(!isYearly);
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-4">
-            {/* Header Section */}
-            <div className="text-center mb-16">
-                <div className="inline-flex items-center bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2 mb-6">
-                    <FaStar className="text-purple-400 mr-2" size={16} />
-                    <span className="text-purple-300 text-sm font-medium">Flexible Pricing Plans</span>
-                </div>
+        <div className="py-20">
+            <h1 className="heading text-white text-center mb-4">
+                Choose Your{" "}
+                <span
+                    className="bg-white px-2 py-1 rounded text-black italic"
+                    style={{ fontFamily: 'Times New Roman, serif' }}
+                >
+                    Perfect Plan
+                </span>
+            </h1>
 
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    Choose Your{" "}
-                    <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        Perfect Plan
-                    </span>
-                </h1>
+            <p className="text-center text-gray-400 mb-10 max-w-2xl mx-auto">
+                Scale your intelligent systems with flexible pricing that grows with your needs
+            </p>
 
-                <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                    Scale your intelligent systems with flexible pricing that grows with your needs.
-                    Start free, upgrade when ready.
-                </p>
-
-                {/* Enhanced Pricing Toggle */}
-                <div className="flex items-center justify-center mb-16">
-                    <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-1.5 shadow-2xl">
-                        <div
-                            className={`absolute top-1.5 left-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg transition-all duration-300 ease-out ${isYearly ? 'translate-x-[140px]' : 'translate-x-0'
-                                }`}
-                            style={{
-                                width: isYearly ? '160px' : '100px',
-                                height: '44px'
-                            }}
-                        />
-                        <div className="relative flex items-center">
-                            <button
-                                className={`px-6 py-3 rounded-lg transition-all duration-300 font-medium relative z-10 ${!isYearly ? "text-white" : "text-gray-400 hover:text-gray-200"
-                                    }`}
-                                onClick={() => setIsYearly(false)}
-                            >
-                                Monthly
-                            </button>
-                            <button
-                                className={`px-6 py-3 rounded-lg transition-all duration-300 font-medium relative z-10 flex items-center ${isYearly ? "text-white" : "text-gray-400 hover:text-gray-200"
-                                    }`}
-                                onClick={() => setIsYearly(true)}
-                            >
-                                Yearly
-                                <span className="ml-2 text-xs bg-green-500 text-white px-2 py-1 rounded-full animate-pulse">
-                                    Save up to 17%
-                                </span>
-                            </button>
-                        </div>
-                    </div>
+            {/* Pricing Toggle */}
+            <div className="flex items-center justify-center mb-16">
+                <div className="flex items-center bg-gray-800 rounded-lg p-1">
+                    <button
+                        className={`px-6 py-2 rounded-md transition-all duration-300 ${!isYearly
+                                ? "bg-white text-black font-medium"
+                                : "text-white hover:text-gray-300"
+                            }`}
+                        onClick={() => setIsYearly(false)}
+                    >
+                        Monthly
+                    </button>
+                    <button
+                        className={`px-6 py-2 rounded-md transition-all duration-300 ${isYearly
+                                ? "bg-white text-black font-medium"
+                                : "text-white hover:text-gray-300"
+                            }`}
+                        onClick={() => setIsYearly(true)}
+                    >
+                        Yearly
+                        <span className="ml-2 text-xs bg-green-500 text-white px-2 py-1 rounded-full">
+                            Save 17%
+                        </span>
+                    </button>
                 </div>
             </div>
 
             {/* Pricing Cards */}
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-                    {pricingPlans.map((plan, index) => {
-                        const Icon = plan.icon;
-                        const savings = calculateSavings(plan);
-                        const savingsPercentage = calculateSavingsPercentage(plan);
+            <div className="flex flex-wrap items-center justify-center p-4 gap-8 mt-10">
+                {pricingPlans.map((plan) => (
+                    <div
+                        className="lg:min-h-[35rem] h-[30rem] flex items-center justify-center sm:w-96 w-[80vw] relative"
+                        key={plan.id}
+                    >
+                        {plan.popular && (
+                            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                                <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    Most Popular
+                                </span>
+                            </div>
+                        )}
 
-                        return (
-                            <div
-                                key={plan.id}
-                                className={`relative w-full max-w-sm transform transition-all duration-500 ${plan.popular ? 'lg:scale-110 lg:-translate-y-4' : ''
-                                    } ${hoveredPlan === plan.id ? 'scale-105' : ''}`}
-                                onMouseEnter={() => setHoveredPlan(plan.id)}
-                                onMouseLeave={() => setHoveredPlan(null)}
-                                style={{ animationDelay: `${index * 150}ms` }}
-                            >
-                                {/* Popular Badge */}
-                                {plan.popular && (
-                                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                                        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center shadow-lg">
-                                            <FaCrown className="mr-2" size={14} />
-                                            Most Popular
+                        <PinContainer
+                            title={plan.name}
+                            href="#"
+                        >
+                            <div className="relative flex flex-col items-center justify-start sm:w-96 w-[80vw] overflow-hidden h-[28rem] p-6">
+                                <div
+                                    className="relative w-full h-full overflow-hidden lg:rounded-3xl flex flex-col"
+                                    style={{
+                                        backgroundColor: plan.popular ? "#1a1a2e" : "#13162D",
+                                        border: plan.popular ? "2px solid #6366f1" : "1px solid #2a2d47"
+                                    }}
+                                >
+                                    {/* Plan Header */}
+                                    <div className="text-center mb-6">
+                                        <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                                        <div className="flex items-baseline justify-center mb-2">
+                                            <span className="text-4xl font-bold text-white">
+                                                ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                                            </span>
+                                            <span className="text-gray-400 ml-2">
+                                                /{isYearly ? 'year' : 'month'}
+                                            </span>
                                         </div>
-                                    </div>
-                                )}
-
-                                {/* Card */}
-                                <div className={`relative h-full bg-slate-800/40 backdrop-blur-sm border-2 rounded-2xl p-8 shadow-2xl transition-all duration-500 ${plan.popular
-                                        ? 'border-purple-500/50 shadow-purple-500/25'
-                                        : 'border-slate-700/50 hover:border-slate-600/50'
-                                    } ${hoveredPlan === plan.id ? 'shadow-3xl' : ''}`}>
-
-                                    {/* Background Gradient Overlay */}
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${plan.color} opacity-5 rounded-2xl`} />
-
-                                    <div className="relative z-10">
-                                        {/* Icon and Title */}
-                                        <div className="text-center mb-8">
-                                            <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${plan.color} rounded-xl mb-4 shadow-lg`}>
-                                                <Icon className="text-white" size={24} />
-                                            </div>
-                                            <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                                            <p className="text-gray-400 text-sm leading-relaxed">{plan.description}</p>
-                                        </div>
-
-                                        {/* Pricing */}
-                                        <div className="text-center mb-8">
-                                            <div className="flex items-baseline justify-center mb-2">
-                                                <span className="text-5xl font-bold text-white">
-                                                    ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
-                                                </span>
-                                                <span className="text-gray-400 ml-2 text-lg">
-                                                    /{isYearly ? 'year' : 'month'}
-                                                </span>
-                                            </div>
-                                            {isYearly && (
-                                                <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 mt-3">
-                                                    <p className="text-green-400 text-sm font-medium">
-                                                        🎉 Save ${savings} annually ({savingsPercentage}% off!)
-                                                    </p>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {/* Features */}
-                                        <div className="mb-8">
-                                            <h4 className="text-white font-semibold mb-4 flex items-center">
-                                                <FaShield className="mr-2 text-green-400" size={16} />
-                                                What's included:
-                                            </h4>
-                                            <ul className="space-y-3">
-                                                {plan.features.map((feature, index) => (
-                                                    <li key={index} className="flex items-start group">
-                                                        <FaCheck className="text-green-400 mt-1 mr-3 flex-shrink-0 transition-transform group-hover:scale-110" size={12} />
-                                                        <span className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors">{feature}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        {/* CTA Button */}
-                                        <button
-                                            className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${plan.popular
-                                                    ? `bg-gradient-to-r ${plan.color} text-white hover:shadow-xl hover:shadow-purple-500/25`
-                                                    : "bg-slate-700 text-white hover:bg-slate-600 hover:shadow-xl"
-                                                }`}
-                                        >
-                                            {plan.popular ? 'Start Free Trial' : 'Get Started'}
-                                            {plan.popular && <span className="ml-2">→</span>}
-                                        </button>
-
-                                        {/* Additional Info for Popular Plan */}
-                                        {plan.popular && (
-                                            <p className="text-center text-gray-400 text-xs mt-3">
-                                                14-day free trial • No credit card required
+                                        {isYearly && (
+                                            <p className="text-green-400 text-sm">
+                                                Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice} annually
                                             </p>
                                         )}
+                                        <p className="text-gray-400 text-sm mt-2">{plan.description}</p>
+                                    </div>
+
+                                    {/* Features */}
+                                    <div className="flex-1">
+                                        <ul className="space-y-3">
+                                            {plan.features.map((feature, index) => (
+                                                <li key={index} className="flex items-start">
+                                                    <FaCheck className="text-green-400 mt-1 mr-3 flex-shrink-0" size={12} />
+                                                    <span className="text-gray-300 text-sm">{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* CTA Button */}
+                                    <div className="mt-6">
+                                        <button
+                                            className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 ${plan.popular
+                                                    ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
+                                                    : "bg-gray-700 text-white hover:bg-gray-600"
+                                                }`}
+                                        >
+                                            Get Started
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        );
-                    })}
-                </div>
+                        </PinContainer>
+                    </div>
+                ))}
             </div>
 
-            {/* Enhanced Footer Section */}
-            <div className="text-center mt-20">
-                <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 max-w-4xl mx-auto mb-12">
-                    <h3 className="text-2xl font-bold text-white mb-4">Why choose our platform?</h3>
-                    <p className="text-gray-300 mb-6">
-                        Join thousands of satisfied customers who trust our platform for their business needs
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
-                        <div className="flex items-center justify-center space-x-3">
-                            <FaCheck className="text-green-400" size={16} />
-                            <span>SSL Security & Encryption</span>
-                        </div>
-                        <div className="flex items-center justify-center space-x-3">
-                            <FaCheck className="text-green-400" size={16} />
-                            <span>99.9% Uptime Guarantee</span>
-                        </div>
-                        <div className="flex items-center justify-center space-x-3">
-                            <FaCheck className="text-green-400" size={16} />
-                            <span>GDPR & SOC2 Compliant</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-400">
-                    <span className="flex items-center space-x-2">
-                        <FaUsers className="text-blue-400" size={16} />
-                        <span>10,000+ happy customers</span>
+            {/* Additional Info */}
+            <div className="text-center mt-16">
+                <p className="text-gray-400 mb-4">
+                    All plans include 14-day free trial • No setup fees • Cancel anytime
+                </p>
+                <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
+                    <span className="flex items-center">
+                        <FaCheck className="text-green-400 mr-2" size={12} />
+                        SSL Security
                     </span>
-                    <span>•</span>
-                    <span>No setup fees</span>
-                    <span>•</span>
-                    <span>Cancel anytime</span>
+                    <span className="flex items-center">
+                        <FaCheck className="text-green-400 mr-2" size={12} />
+                        99.9% Uptime
+                    </span>
+                    <span className="flex items-center">
+                        <FaCheck className="text-green-400 mr-2" size={12} />
+                        GDPR Compliant
+                    </span>
                 </div>
             </div>
         </div>
