@@ -110,33 +110,33 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "UnsubHero has completely transformed my inbox. I was drowning in newsletters and promotional emails, but now I just forward them to unsub@unsubhero.com and they're gone. It's like magic! My inbox is finally manageable again.",
+    name: "Sarah Chen",
+    title: "Marketing Manager at TechFlow",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "The one-click unsubscribe feature is a game-changer. I used to spend hours manually unsubscribing from emails. Now it's automated and works perfectly. UnsubHero has saved me countless hours every week.",
+    name: "David Rodriguez",
+    title: "Product Manager at InnovateCorp",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "As a small business owner, I was getting overwhelmed with email clutter. UnsubHero's smart detection automatically identifies newsletters and handles the unsubscribe process. My productivity has increased dramatically.",
+    name: "Emily Watson",
+    title: "Founder of GreenStart Solutions",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "The AI-powered classification is incredibly accurate. It knows exactly which emails are newsletters and handles everything automatically. I've recommended UnsubHero to my entire team - it's that good.",
+    name: "Marcus Thompson",
+    title: "CTO at DataSync Inc",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Clean inbox in minutes - that's exactly what UnsubHero delivers. The bulk unsubscribe manager is brilliant for handling multiple emails at once. This tool has become essential for my daily workflow.",
+    name: "Lisa Park",
+    title: "Operations Director at ScaleUp",
   },
 ];
 
