@@ -5,7 +5,7 @@ import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
 const Approach = () => {
   return (
-    <section className="w-full py-20">
+    <section id="approach" className="w-full py-20">
       <h1 className="heading text-white">
         Our Simple{" "}
         <span

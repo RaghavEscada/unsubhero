@@ -66,6 +66,7 @@ const PricingSection = () => {
     };
 
     return (
+        <section id="pricing" className="py-20 w-full">
         <div className="py-20">
             <h1 className="heading text-white text-center mb-4">
                 Choose Your{" "}
@@ -205,7 +206,8 @@ const PricingSection = () => {
                 </div>
             </div>
         </div>
-    );
+      </section>
+  );
 };
 
 export default PricingSection;
