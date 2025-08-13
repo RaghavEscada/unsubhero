@@ -19,10 +19,12 @@ function Footerdemo() {
   const [isChatOpen, setIsChatOpen] = React.useState(false)
 
   React.useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
+    if (typeof window !== 'undefined') {
+      if (isDarkMode) {
+        document.documentElement.classList.add("dark")
+      } else {
+        document.documentElement.classList.remove("dark")
+      }
     }
   }, [isDarkMode])
 
